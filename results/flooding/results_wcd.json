@@ -1,0 +1,106 @@
+{
+ "catalogue": [
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20160901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "229b745b-11ba-4e77-a105-ec4b8189da6e"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20160901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "5ee5c957-8fbe-4c59-89b5-711bc07cd7e2"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20170901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "ae625689-f63f-4de9-9387-234be69a5335"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20170901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "cab6e4ca-14db-4475-808c-39f8a86d4405"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20180901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "32de7568-ee94-4f16-8869-3a994b914bd1"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20180901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "c9d23d3b-408b-49bf-a75d-2978a87a6454"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20190901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "5c976f9b-1f36-4ff3-b629-80137c89c8c4"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20190901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "d3ee5f7d-2116-4ac7-b525-9016dbabbe08"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20200901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "f40a7bd8-8bca-40f6-a0a4-0049c1411d18"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20200901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "377b0c81-8de3-4403-af83-5ce54dc444ee"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20210901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "e03a254d-fdab-4858-aac6-f0242425d0d4"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20210901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "0febb9a3-e0b7-449d-afe4-dbf6df2e52db"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20220901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "eda347c7-4e1a-4800-b054-9afc73f6707b"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20220901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "41edf38e-35df-4f2d-92d4-3e994dd5ada3"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20230901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "611b80ae-ff62-43e0-8696-bf176bfd2fce"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20230901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "50afff1f-0746-4df6-abd6-d9bcf654f327"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20240901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "38452017-ec71-46c2-91eb-bea0976627c4"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20240901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "7d676d58-fb2d-4e83-a876-90c7bbd902a2"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQA_20250901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "39c77db1-fdd9-436f-a930-fdce6da217a1"
+  },
+  {
+   "name": "CLMS_WSI_WCD_010m_T29SQB_20250901P1Y_COMB_V100",
+   "in_catalogue": true,
+   "id": "56470a42-dd0d-4963-a9f0-cc5ae4a460b6"
+  }
+ ],
+ "downloaded": [],
+ "status": "not downloaded: CDSE_TOKEN not set (download returns HTTP 401 without a CDSE account token)"
+}

@@ -49,8 +49,31 @@ snakemake = "*"
 # geopandas = "*"            # vector I/O
 # dask = "*"                 # out-of-core / parallel
 
+# --- this study ---
+geopandas = ">=1.0"
+pyogrio = "*"
+shapely = ">=2.0"
+rasterio = "*"
+affine = "*"
+pyproj = "*"
+pystac-client = "*"          # Earth Search STAC (Sentinel-2 L2A)
+planetary-computer = "*"     # signing for Microsoft Planetary Computer (Sentinel-2 gaps, Sentinel-1 RTC)
+healpix-geo = ">=0.4.1"      # HEALPix on the WGS84 ellipsoid, NESTED (sphere only to address the Climate DT grid)
+zarr = ">=3"
+scikit-image = "*"
+scikit-learn = "*"
+python-libarchive-c = "*"    # unpacks the LAST-EBD .rar flood masks
+requests = "*"
+cdsapi = "*"                 # ERA5 (Copernicus Climate Data Store account)
+netcdf4 = "*"
+h5netcdf = "*"
+h5py = "*"
+fsspec = "*"                 # E-OBS range reads
+
 # Pip-only deps go in [pypi-dependencies]. Conda-forge is preferred where available.
-# [pypi-dependencies]
+[pypi-dependencies]
+opencv-python-headless = "*" # morphology used in the Kordelas et al. 2018 re-implementation
+polytope-client = "*"        # Destination Earth Climate DT (DestinE upgraded access)
 # pygbif = "*"               # GBIF occurrences
 # polytope-client = "*"      # Destination Earth Climate DT
 # earthkit-data = "*"
@@ -76,6 +99,23 @@ tests = { features = ["tests"], solve-group = "default" }
 
 [tasks]
 run = "snakemake --cores 1"
+# Doñana flooding regime on HEALPix d19 (WGS84, NESTED). Work files in work/flooding (gitignored).
+flood-inputs = "python -I pipeline/flooding/00_fetch_inputs.py work/flooding && python -I pipeline/flooding/00b_fetch_era5.py work/flooding"
+flood-grid = "python -I pipeline/flooding/01_grid.py work/flooding && python -I pipeline/flooding/01b_test_resampler.py work/flooding"
+flood-reference = "python -I pipeline/flooding/04_last_to_healpix.py work/flooding && python -I pipeline/flooding/04b_last_hydroperiod.py work/flooding && python -I pipeline/flooding/06_strata.py work/flooding"
+flood-s2 = "python -I pipeline/flooding/02_catalog.py work/flooding && python -I pipeline/flooding/02b_catalog_pc.py work/flooding && python -I pipeline/flooding/05_run_s2.py work/flooding 2017-09-01 2026-08-31"
+flood-s1 = "python -I pipeline/flooding/08_s1_catalog.py work/flooding && python -I pipeline/flooding/09_s1_process.py work/flooding"
+flood-results = """python -I pipeline/flooding/07_validate.py work/flooding && python -I pipeline/flooding/07b_validate_s1.py work/flooding \
+  && python -I pipeline/flooding/10_hydroperiod.py work/flooding && python -I pipeline/flooding/10b_anomaly.py work/flooding \
+  && python -I pipeline/flooding/11_groundwater.py work/flooding && python -I pipeline/flooding/12_figures.py work/flooding \
+  && python -I pipeline/flooding/14_dt_export.py work/flooding && python -I pipeline/flooding/15_checks.py work/flooding"""
+flooding = { depends-on = ["flood-inputs", "flood-grid", "flood-reference", "flood-s2", "flood-s1", "flood-results"] }
+# Copernicus Land Water Cover Duration validation: needs CDSE_TOKEN (free Copernicus Data Space account) in the environment.
+flood-wcd = "python -I pipeline/flooding/13_wcd_validate.py work/flooding"
+# Climate DT fitness test (DestinE upgraded access in ~/.polytopeapirc, CDS account in ~/.cdsapirc). Raw extracts stay in work/.
+climate-dt = """sh pipeline/climate_dt/01_fetch_dt_all.sh work/climate_dt && python -I pipeline/climate_dt/02_fetch_era5.py work/climate_dt \
+  && python -I pipeline/climate_dt/03_fetch_eobs.py work/climate_dt && python -I pipeline/climate_dt/04_analyse.py work/climate_dt \
+  && python -I pipeline/climate_dt/05_figures.py work/climate_dt"""
 book = "myst build --html"
 lab = "jupyter lab"
 

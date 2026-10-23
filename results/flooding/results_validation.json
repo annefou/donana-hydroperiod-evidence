@@ -1,0 +1,642 @@
+{
+ "n_pairs": 37,
+ "pairs_by_sensor": {
+  "l8ol": 23,
+  "l7et": 14
+ },
+ "combined": {
+  "open_water": {
+   "complete": {
+    "EAP": {
+     "kappa": 0.8508,
+     "OA": 0.9823,
+     "PA_water": 0.8663,
+     "UA_water": 0.8543,
+     "omission_water": 0.1337,
+     "commission_water": 0.1457,
+     "ref_water_ha": 264987.4815,
+     "map_water_ha": 268702.3214,
+     "area_ha": 4217827.8735,
+     "kappa_ci95": [
+      0.7785641620771874,
+      0.8898539386428057
+     ],
+     "kappa_block_folds": [
+      0.883,
+      0.891,
+      0.644,
+      0.895,
+      0.802
+     ]
+    },
+    "IAP": {
+     "kappa": 0.7679,
+     "OA": 0.9657,
+     "PA_water": 0.7284,
+     "UA_water": 0.8543,
+     "omission_water": 0.2716,
+     "commission_water": 0.1457,
+     "ref_water_ha": 391988.5785,
+     "map_water_ha": 334224.8274,
+     "area_ha": 4525963.4941,
+     "kappa_ci95": [
+      0.7014029301235777,
+      0.805490235423616
+     ],
+     "kappa_block_folds": [
+      0.806,
+      0.807,
+      0.582,
+      0.8,
+      0.733
+     ]
+    }
+   },
+   "marsh": {
+    "EAP": {
+     "kappa": 0.8897,
+     "OA": 0.9634,
+     "PA_water": 0.8604,
+     "UA_water": 0.972,
+     "omission_water": 0.1396,
+     "commission_water": 0.028,
+     "ref_water_ha": 186470.4187,
+     "map_water_ha": 165061.6827,
+     "area_ha": 836833.7939,
+     "kappa_ci95": [
+      0.8640335830693304,
+      0.9126537010051854
+     ],
+     "kappa_block_folds": [
+      0.889,
+      0.866,
+      0.828,
+      0.92,
+      0.894
+     ]
+    },
+    "IAP": {
+     "kappa": 0.7755,
+     "OA": 0.9168,
+     "PA_water": 0.7304,
+     "UA_water": 0.9589,
+     "omission_water": 0.2696,
+     "commission_water": 0.0411,
+     "ref_water_ha": 277684.0567,
+     "map_water_ha": 211515.4777,
+     "area_ha": 1003961.2815,
+     "kappa_ci95": [
+      0.7426657630971499,
+      0.7987905952726233
+     ],
+     "kappa_block_folds": [
+      0.781,
+      0.754,
+      0.665,
+      0.816,
+      0.777
+     ]
+    }
+   },
+   "lagoon": {
+    "EAP": {
+     "kappa": 0.9268,
+     "OA": 0.9695,
+     "PA_water": 0.9805,
+     "UA_water": 0.9182,
+     "omission_water": 0.0195,
+     "commission_water": 0.0818,
+     "ref_water_ha": 2268.0423,
+     "map_water_ha": 2421.923,
+     "area_ha": 7950.1216,
+     "kappa_ci95": [
+      0.7688012303532548,
+      0.9735657307942939
+     ],
+     "kappa_block_folds": [
+      0.932,
+      0.143,
+      0.984,
+      0.903,
+      0.926
+     ]
+    },
+    "IAP": {
+     "kappa": 0.8183,
+     "OA": 0.9158,
+     "PA_water": 0.8892,
+     "UA_water": 0.8799,
+     "omission_water": 0.1108,
+     "commission_water": 0.1201,
+     "ref_water_ha": 3789.5509,
+     "map_water_ha": 3829.7649,
+     "area_ha": 10448.5533,
+     "kappa_ci95": [
+      0.6607480551913539,
+      0.861675709340128
+     ],
+     "kappa_block_folds": [
+      0.842,
+      0.694,
+      0.833,
+      0.788,
+      0.813
+     ]
+    }
+   },
+   "other": {
+    "EAP": {
+     "kappa": 0.7472,
+     "OA": 0.987,
+     "PA_water": 0.8771,
+     "UA_water": 0.6608,
+     "omission_water": 0.1229,
+     "commission_water": 0.3392,
+     "ref_water_ha": 76249.0206,
+     "map_water_ha": 101218.7156,
+     "area_ha": 3373043.9579,
+     "kappa_ci95": [
+      0.3997422149618995,
+      0.8679104530076349
+     ],
+     "kappa_block_folds": [
+      0.825,
+      0.901,
+      0.317,
+      0.354,
+      0.563
+     ]
+    },
+    "IAP": {
+     "kappa": 0.6815,
+     "OA": 0.9799,
+     "PA_water": 0.718,
+     "UA_water": 0.6675,
+     "omission_water": 0.282,
+     "commission_water": 0.3325,
+     "ref_water_ha": 110514.9709,
+     "map_water_ha": 118879.5848,
+     "area_ha": 3511553.6592,
+     "kappa_ci95": [
+      0.3690101792988836,
+      0.7947006188889073
+     ],
+     "kappa_block_folds": [
+      0.766,
+      0.831,
+      0.296,
+      0.317,
+      0.526
+     ]
+    }
+   }
+  },
+  "open_plus_waterveg": {
+   "complete": {
+    "EAP": {
+     "kappa": 0.8508,
+     "OA": 0.9823,
+     "PA_water": 0.8663,
+     "UA_water": 0.8543,
+     "omission_water": 0.1337,
+     "commission_water": 0.1457,
+     "ref_water_ha": 264987.4815,
+     "map_water_ha": 268702.3214,
+     "area_ha": 4217827.8735,
+     "kappa_ci95": [
+      0.7785641620771874,
+      0.8898539386428057
+     ],
+     "kappa_block_folds": [
+      0.883,
+      0.891,
+      0.644,
+      0.895,
+      0.802
+     ]
+    },
+    "IAP": {
+     "kappa": 0.7679,
+     "OA": 0.9657,
+     "PA_water": 0.7284,
+     "UA_water": 0.8543,
+     "omission_water": 0.2716,
+     "commission_water": 0.1457,
+     "ref_water_ha": 391988.5785,
+     "map_water_ha": 334224.8274,
+     "area_ha": 4525963.4941,
+     "kappa_ci95": [
+      0.7014029301235777,
+      0.805490235423616
+     ],
+     "kappa_block_folds": [
+      0.806,
+      0.807,
+      0.582,
+      0.8,
+      0.733
+     ]
+    }
+   },
+   "marsh": {
+    "EAP": {
+     "kappa": 0.8897,
+     "OA": 0.9634,
+     "PA_water": 0.8604,
+     "UA_water": 0.972,
+     "omission_water": 0.1396,
+     "commission_water": 0.028,
+     "ref_water_ha": 186470.4187,
+     "map_water_ha": 165061.6827,
+     "area_ha": 836833.7939,
+     "kappa_ci95": [
+      0.8640335830693304,
+      0.9126537010051854
+     ],
+     "kappa_block_folds": [
+      0.889,
+      0.866,
+      0.828,
+      0.92,
+      0.894
+     ]
+    },
+    "IAP": {
+     "kappa": 0.7755,
+     "OA": 0.9168,
+     "PA_water": 0.7304,
+     "UA_water": 0.9589,
+     "omission_water": 0.2696,
+     "commission_water": 0.0411,
+     "ref_water_ha": 277684.0567,
+     "map_water_ha": 211515.4777,
+     "area_ha": 1003961.2815,
+     "kappa_ci95": [
+      0.7426657630971499,
+      0.7987905952726233
+     ],
+     "kappa_block_folds": [
+      0.781,
+      0.754,
+      0.665,
+      0.816,
+      0.777
+     ]
+    }
+   },
+   "lagoon": {
+    "EAP": {
+     "kappa": 0.9268,
+     "OA": 0.9695,
+     "PA_water": 0.9805,
+     "UA_water": 0.9182,
+     "omission_water": 0.0195,
+     "commission_water": 0.0818,
+     "ref_water_ha": 2268.0423,
+     "map_water_ha": 2421.923,
+     "area_ha": 7950.1216,
+     "kappa_ci95": [
+      0.7688012303532548,
+      0.9735657307942939
+     ],
+     "kappa_block_folds": [
+      0.932,
+      0.143,
+      0.984,
+      0.903,
+      0.926
+     ]
+    },
+    "IAP": {
+     "kappa": 0.8183,
+     "OA": 0.9158,
+     "PA_water": 0.8892,
+     "UA_water": 0.8799,
+     "omission_water": 0.1108,
+     "commission_water": 0.1201,
+     "ref_water_ha": 3789.5509,
+     "map_water_ha": 3829.7649,
+     "area_ha": 10448.5533,
+     "kappa_ci95": [
+      0.6607480551913539,
+      0.861675709340128
+     ],
+     "kappa_block_folds": [
+      0.842,
+      0.694,
+      0.833,
+      0.788,
+      0.813
+     ]
+    }
+   },
+   "other": {
+    "EAP": {
+     "kappa": 0.7472,
+     "OA": 0.987,
+     "PA_water": 0.8771,
+     "UA_water": 0.6608,
+     "omission_water": 0.1229,
+     "commission_water": 0.3392,
+     "ref_water_ha": 76249.0206,
+     "map_water_ha": 101218.7156,
+     "area_ha": 3373043.9579,
+     "kappa_ci95": [
+      0.3997422149618995,
+      0.8679104530076349
+     ],
+     "kappa_block_folds": [
+      0.825,
+      0.901,
+      0.317,
+      0.354,
+      0.563
+     ]
+    },
+    "IAP": {
+     "kappa": 0.6815,
+     "OA": 0.9799,
+     "PA_water": 0.718,
+     "UA_water": 0.6675,
+     "omission_water": 0.282,
+     "commission_water": 0.3325,
+     "ref_water_ha": 110514.9709,
+     "map_water_ha": 118879.5848,
+     "area_ha": 3511553.6592,
+     "kappa_ci95": [
+      0.3690101792988836,
+      0.7947006188889073
+     ],
+     "kappa_block_folds": [
+      0.766,
+      0.831,
+      0.296,
+      0.317,
+      0.526
+     ]
+    }
+   }
+  },
+  "fixed_B11_0.186": {
+   "complete": {
+    "EAP": {
+     "kappa": 0.2662,
+     "OA": 0.7598,
+     "PA_water": 0.9963,
+     "UA_water": 0.2069,
+     "omission_water": 0.0037,
+     "commission_water": 0.7931,
+     "ref_water_ha": 264987.4815,
+     "map_water_ha": 1276317.3525,
+     "area_ha": 4217827.8735,
+     "kappa_ci95": [
+      0.16002246822598137,
+      0.38059580026150447
+     ],
+     "kappa_block_folds": [
+      0.366,
+      0.36,
+      0.1,
+      0.353,
+      0.19
+     ]
+    },
+    "IAP": {
+     "kappa": 0.3081,
+     "OA": 0.7468,
+     "PA_water": 0.9887,
+     "UA_water": 0.2535,
+     "omission_water": 0.0113,
+     "commission_water": 0.7465,
+     "ref_water_ha": 391988.5785,
+     "map_water_ha": 1529020.2077,
+     "area_ha": 4525963.4941,
+     "kappa_ci95": [
+      0.20195924954217276,
+      0.4102177668593502
+     ],
+     "kappa_block_folds": [
+      0.397,
+      0.396,
+      0.155,
+      0.384,
+      0.229
+     ]
+    }
+   },
+   "marsh": {
+    "EAP": {
+     "kappa": 0.7551,
+     "OA": 0.9021,
+     "PA_water": 0.9971,
+     "UA_water": 0.6955,
+     "omission_water": 0.0029,
+     "commission_water": 0.3045,
+     "ref_water_ha": 186470.4187,
+     "map_water_ha": 267338.4752,
+     "area_ha": 836833.7939,
+     "kappa_ci95": [
+      0.7100409521476132,
+      0.8027756585676163
+     ],
+     "kappa_block_folds": [
+      0.792,
+      0.778,
+      0.7,
+      0.686,
+      0.797
+     ]
+    },
+    "IAP": {
+     "kappa": 0.6975,
+     "OA": 0.8609,
+     "PA_water": 0.9901,
+     "UA_water": 0.6675,
+     "omission_water": 0.0099,
+     "commission_water": 0.3325,
+     "ref_water_ha": 277684.0567,
+     "map_water_ha": 411866.7394,
+     "area_ha": 1003961.2815,
+     "kappa_ci95": [
+      0.6642796041786103,
+      0.731837738003258
+     ],
+     "kappa_block_folds": [
+      0.717,
+      0.715,
+      0.656,
+      0.64,
+      0.735
+     ]
+    }
+   },
+   "lagoon": {
+    "EAP": {
+     "kappa": 0.7898,
+     "OA": 0.906,
+     "PA_water": 0.9965,
+     "UA_water": 0.7534,
+     "omission_water": 0.0035,
+     "commission_water": 0.2466,
+     "ref_water_ha": 2268.0423,
+     "map_water_ha": 3000.0134,
+     "area_ha": 7950.1216,
+     "kappa_ci95": [
+      0.3071902579430755,
+      0.8400525413529042
+     ],
+     "kappa_block_folds": [
+      0.904,
+      0.006,
+      0.794,
+      0.827,
+      0.227
+     ]
+    },
+    "IAP": {
+     "kappa": 0.724,
+     "OA": 0.8625,
+     "PA_water": 0.9905,
+     "UA_water": 0.7282,
+     "omission_water": 0.0095,
+     "commission_water": 0.2718,
+     "ref_water_ha": 3789.5509,
+     "map_water_ha": 5154.3314,
+     "area_ha": 10448.5533,
+     "kappa_ci95": [
+      0.5650619763957236,
+      0.7749774161696
+     ],
+     "kappa_block_folds": [
+      0.841,
+      0.457,
+      0.726,
+      0.729,
+      0.391
+     ]
+    }
+   },
+   "other": {
+    "EAP": {
+     "kappa": 0.1024,
+     "OA": 0.7241,
+     "PA_water": 0.9944,
+     "UA_water": 0.0754,
+     "omission_water": 0.0056,
+     "commission_water": 0.9246,
+     "ref_water_ha": 76249.0206,
+     "map_water_ha": 1005978.864,
+     "area_ha": 3373043.9579,
+     "kappa_ci95": [
+      0.027413212132797838,
+      0.21053218526015838
+     ],
+     "kappa_block_folds": [
+      0.149,
+      0.242,
+      0.031,
+      0.023,
+      0.048
+     ]
+    },
+    "IAP": {
+     "kappa": 0.1282,
+     "OA": 0.7139,
+     "PA_water": 0.9851,
+     "UA_water": 0.0979,
+     "omission_water": 0.0149,
+     "commission_water": 0.9021,
+     "ref_water_ha": 110514.9709,
+     "map_water_ha": 1111999.1368,
+     "area_ha": 3511553.6592,
+     "kappa_ci95": [
+      0.044357339838997895,
+      0.24277900436515698
+     ],
+     "kappa_block_folds": [
+      0.172,
+      0.275,
+      0.056,
+      0.051,
+      0.059
+     ]
+    }
+   }
+  }
+ },
+ "n_pairs_l8": 23,
+ "field_points_20170424": {
+  "2017-04-22": {
+   "scene": "2017-04-22",
+   "T_final_B11": 0.129,
+   "T_init_B11": 0.1157,
+   "Tfinal": {
+    "Ss": {
+     "n": 123,
+     "share_mapped_water": 0.024
+    },
+    "In": {
+     "n": 729,
+     "share_mapped_water": 1.0
+    },
+    "En": {
+     "n": 45,
+     "share_mapped_water": 0.911
+    },
+    "Emp": {
+     "n": 18,
+     "share_mapped_water": 0.833
+    },
+    "Sh": {
+     "n": 22,
+     "share_mapped_water": 0.545
+    }
+   },
+   "Tinit": {
+    "Ss": {
+     "n": 123,
+     "share_mapped_water": 0.016
+    },
+    "In": {
+     "n": 729,
+     "share_mapped_water": 0.997
+    },
+    "En": {
+     "n": 45,
+     "share_mapped_water": 0.889
+    },
+    "Emp": {
+     "n": 18,
+     "share_mapped_water": 0.833
+    },
+    "Sh": {
+     "n": 22,
+     "share_mapped_water": 0.409
+    }
+   },
+   "fixed_0.186": {
+    "Ss": {
+     "n": 123,
+     "share_mapped_water": 0.537
+    },
+    "In": {
+     "n": 729,
+     "share_mapped_water": 1.0
+    },
+    "En": {
+     "n": 45,
+     "share_mapped_water": 1.0
+    },
+    "Emp": {
+     "n": 18,
+     "share_mapped_water": 1.0
+    },
+    "Sh": {
+     "n": 22,
+     "share_mapped_water": 0.955
+    }
+   }
+  }
+ },
+ "field_points_note": "936 GNSS points, 24 Apr 2017 (D\u00edaz-Delgado 2025, Zenodo 17158473). Classes as coded in the file: In (inundated), Ss, Sh, Emp, En (codes not expanded in the file). Reflectance is the file's own S2 pixel value; threshold from our scene of the nearest date."
+}

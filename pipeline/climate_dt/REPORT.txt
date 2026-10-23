@@ -1,0 +1,145 @@
+CLIMATE DT FITNESS TEST - DONANA POND HYDROPERIOD DRIVERS
+Site: Donana, Natura 2000 ES0000024 (SW Spain, ~36.8-37.2 N, 6.6-6.1 W). Run 2026-10-22.
+Prototype test: one site, one realization per model, 34 hydrological years. Not an operational product.
+
+VERDICT
+  Usable after bias correction, not as-is. IFS-NEMO is close as-is for annual totals but has the wrong
+  timing within the year. IFS-FESOM is not usable raw: it is too dry (-23 %) and has 20/34 "dry" years
+  against about 7 expected. Fit the correction separately for each model.
+  After monthly scaling of rainfall and of daily Tmean/Tmax/Tmin (fitted HY 1990-2013), both models
+  reproduce the observed distribution of hydrological-year rainfall, the Oct-Mar share, the dry- and
+  wet-year frequencies and the evaporative demand. They do this within the gap between E-OBS and ERA5,
+  and they hold out of sample (HY 2014-2023).
+  Use both models (and E-OBS/ERA5 as reference) as a 2-member scenario envelope, not one model.
+
+WHAT WAS COMPARED
+  Hydrological year (HY) y = 1 Sep y .. 31 Aug y+1; HY 1990..2023 (n = 34).
+  Climate DT generation 2, realization 1. hist (activity "baseline") 1990-2014 + SSP3-7.0 ("projections")
+  2015-2024. IFS-NEMO (MareNostrum5) and IFS-FESOM (LUMI). Hourly avg_tprate, 2t and avg_ie from the
+  Polytope timeseries feature at 5 spherical HEALPix level-10 cell centres (nside 1024, NESTED):
+    3490355 marsh centre (36.935 N, 6.328 W)   3490408 marsh north (37.122, -6.240)
+    3490357 marsh east  (36.982, -6.196)       3490451 aquifer / El Rocio (37.122, -6.504)
+    3490362 Biological Reserve dunes (36.982, -6.460)
+  Rainfall uses the mean of the 5 cells; temperature uses cells 3490355/3490451/3490362. The data were not regridded.
+  Hourly values were aggregated to daily: rainfall as the daily mean rate x 86400; Tmean/Tmax/Tmin from the 24 hourly 2 m values.
+  Observations:
+    E-OBS v31.0e at 0.1 deg: the nearest land cell to each DT centre, 5 cells averaged. Primary reference for rainfall.
+    ERA5 at 0.25 deg: the 5 points fall on 2 grid points (37.0 N, 6.25 W and 6.5 W). Primary reference for temperature, Tmax and PET.
+  Evaporative demand: Hargreaves-Samani reference ET (FAO-56 eq. 52) from daily Tmean, Tmax and Tmin. It is
+  computed the same way for DT and ERA5. The DT has no PET variable on Polytope: avg_pevr, mx2t and mn2t
+  were refused ("datacube does not contain a date axis").
+  Because DT years are not in phase with real years, the comparison uses statistics only.
+
+KEY NUMBERS (HY 1990-2023, n = 34; "raw" = DT as delivered)
+                               E-OBS   ERA5   NEMO raw  NEMO BC  FESOM raw  FESOM BC
+  HY rainfall mean (mm)          463    507      501      460       357       470
+  HY rainfall P20 / P80 (mm)  354/563 364/651  381/608  325/569   244/471   348/602
+  CV of HY rainfall             0.33   0.35     0.36     0.35      0.37      0.39
+  Oct-Mar share (mean)          0.78   0.75     0.79     0.79      0.75      0.80
+  Dry years (< obs P20 354 mm)   7      7        6        9        20         7    (expected ~7 of 34)
+  Wet years (> obs P80 563 mm)   7     11        9        8         3         9
+  Longest run of dry years       2      1        1        2         4         1
+  Lag-1 autocorr. of HY rain    0.13   0.08    -0.15    -0.16     -0.03     -0.05  (+/-0.17 = 1 s.e. at n=34)
+  Wet days >= 1 mm per year     54.6   62.1     57.2     55.4      48.3      52.5
+  KS test HY rain vs E-OBS (p)    -    0.67     0.31     0.98      0.006     0.98
+  Annual mean T (deg C)          18.2   18.8     17.8     18.8      18.1      18.8
+  JJA mean daily Tmax (deg C)     -    30.4     31.3     30.6      31.8      30.6
+  Annual max Tmax (deg C)         -    38.0     41.1     40.1      41.8      40.4
+  Hargreaves PET (mm/HY)          -    1120     1231     1117      1252      1116
+  BC = monthly scaling (BC1). The empirical quantile mapping (BC2) gives the same picture: NEMO 461 mm,
+  9 dry / 7 wet years; FESOM 473 mm, 7 dry / 8 wet years (results.json).
+
+  Seasonal cycle (raw, % vs E-OBS monthly means; T vs ERA5):
+    NEMO:  Sep -53 %, Oct -12 %, Nov +18 %, Feb +38 %, Mar +23 %, Apr +39 %. Too wet in late winter and spring,
+           too dry at the start of the HY. T is 1.1-1.9 K too cold from Nov to May, but summer Tmax is too high
+           (diurnal range too large), so Hargreaves PET is +10 % (+111 mm/HY).
+    FESOM: -16 to -35 % in every month from Sep to Mar (Sep -55 %), +14 % in Apr. Winter is 1.3-1.8 K too cold
+           and Sep is 1.0 K too warm. PET is +12 % (+132 mm/HY).
+  Monthly correction factors for rainfall (obs/DT, fitted HY 1990-2013) range from 0.61 to 2.0 for NEMO and
+  0.74 to 2.1 for FESOM in Sep-May (results.json "bc_factors"). Jun-Aug factors (0.2-5) act on near-zero
+  rainfall and are irrelevant to hydroperiod.
+
+  Out-of-sample check, HY 2014-2023 (n = 10, fit HY 1990-2013): mean bias of HY rainfall vs E-OBS
+    NEMO raw +1 % (BC1 -3 %, BC2 -3 %); FESOM raw -24 % (BC1 +6 %, BC2 +8 %).
+    T mean bias vs ERA5 after BC is +0.06 K (NEMO) and +0.09 K (FESOM).
+    JJA Tmax bias after BC is +0.85 K (NEMO) and +0.79 K (FESOM).
+    PET bias after BC is +0.4 % (NEMO) and -0.3 % (FESOM).
+    CV in this decade is 0.30 (NEMO BC) and 0.46 (FESOM BC), against 0.19 in E-OBS. This is one decade of
+    unphased internal variability, so it is weak evidence either way.
+
+  Trends HY 1990-2023 (OLS per decade, 95 % CI adjusted for lag-1 autocorrelation):
+    Rainfall:   E-OBS -23 mm [-84, +38]   ERA5 -30 [-97, +37]   NEMO -28 [-91, +36]   FESOM -42 [-88, +3]
+                None is significant. Signs agree; the CIs overlap.
+    T mean:     E-OBS +0.13 K [-0.04, +0.31]   ERA5 +0.21 [+0.03, +0.38]   NEMO +0.30 [+0.12, +0.48]   FESOM +0.31 [+0.08, +0.54]
+    PET (Harg): ERA5 +16 mm [+8, +25]   NEMO +16 [+1, +31]   FESOM +14 [+0, +28]
+    The DT warms about 1.5x faster than ERA5 and about 2.3x faster than E-OBS, but the CIs overlap.
+    The scaling correction keeps the model trend; it does not remove it.
+
+HOW TO READ THIS FOR HYDROPERIOD
+  - Annual rainfall distribution and dry/wet-year frequency drive whether ponds fill. After BC these match
+    the observations: KS p = 0.98, 7-9 dry years against 7 observed.
+  - Rainfall timing (Oct-Mar share 0.79-0.80 against 0.75-0.78 observed) is acceptable. Raw NEMO shifts
+    rain from Sep/Oct into Feb-Apr. Monthly scaling corrects this on average.
+  - Drought persistence cannot be tested with n = 34. Lag-1 autocorrelation is about 0 in all series, and
+    the longest dry run is 1-2 years. Raw FESOM runs of 4 dry years come from its dry bias.
+  - Evaporative demand: raw PET is 10-12 % too high. Corrected PET is within 0.5 % of ERA5. Tmax must be
+    corrected on its own; correcting only Tmean leaves PET +13 % too high. The annual maximum Tmax stays
+    +2.2 to +2.5 K above ERA5 after BC. ERA5 itself underestimates point heat extremes, so this is not
+    resolved here.
+  - The raw DT also gives its own actual evaporation (avg_ie, NEMO 432 mm/HY at the marsh-centre cell). It
+    has no observational counterpart here and was not used.
+
+LIMITS
+  - One realization per model, and 34 unphased years. The observed 20th percentile has a bootstrap s.e.
+    of 32 mm (95 % range 282-400 mm). Tests of CV and autocorrelation have little power.
+  - The observations disagree with each other: ERA5 is 9 % wetter than E-OBS, 0.5 K warmer, and has 62
+    against 55 wet days. E-OBS station density in the Donana marsh is low. The AEMET ROCIO_IBEB 5 km grid
+    and the Palacio de Donana station (EBD-CSIC ICTS-RBD) would be better references but were not used
+    (no keyless download).
+  - Only 2 of 3 models were tested: ICON was not requested.
+  - The validation decade is 4 months of hist plus SSP3-7.0. The forcings differ little before 2025.
+  - Monthly scaling corrects means only. Daily-intensity and sub-monthly timing errors (they matter for runoff
+    to ponds) remain. BC2 quantile mapping fixes the daily distribution per month but not the persistence.
+  - The point extraction uses spherical HEALPix centres. The geodetic offset is up to 0.13 deg, so a cell can
+    sit about 14 km from the WGS84 location. This does not matter at the 5-30 km scales compared here.
+  - Hargreaves PET is a temperature-only proxy. It ignores radiation, wind and humidity changes.
+
+EURO-CORDEX VIA AdapteCCa (documentation only: escenarios.adaptecca.es/doc/datos.pdf, v7.0, 13 June 2025)
+  - 46 EURO-CORDEX GCM-RCM runs (codes E2-E47) plus the ensemble mean. All 46 have RCP8.5 and 19 have RCP4.5
+    (CMIP5 forcing, no SSPs). EUR-11 is about 12 km.
+  - Delivered bias-adjusted with ISIMIP3 (Lange 2021) on the AEMET ROCIO_IBEB 5 km observational grid. The
+    reference period is 1971-2000.
+  - The viewer serves annual, seasonal and monthly values and indices, including potential evapotranspiration.
+    Raw (unadjusted) CORDEX is only in a legacy viewer version. CMIP6 statistical downscaling (DeepESD etc.)
+    is also offered on the 5 km grid.
+  - Comparison: AdapteCCa gives a 46-member, already bias-adjusted, 5 km ensemble on Spain's own
+    observational grid. The DT gives 2 testable members (3 models) at about 5 km native resolution, with
+    hourly output and SSP3-7.0 only. For scenario envelopes and dry-year probabilities, EURO-CORDEX/AdapteCCa
+    is the stronger base. The DT is useful as a high-resolution, hourly, physically consistent complement
+    (storm timing, evaporation fluxes). It needs the bias correction above.
+
+FILES
+  results.json                      all metrics (summary, KS/quantile comparisons, trends, seasonal cycle,
+                                    validation, BC factors, cells used)
+  figures/fig1_annual_rainfall.png  HY rainfall and Oct-Mar share distributions (.pdf too)
+  figures/fig2_seasonal_cycle.png   mean monthly rainfall and T (.pdf too)
+  data/derived/hy_*.csv             per-HY metrics per source (DT-derived statistics, not raw DT)
+  data/raw/                         raw DT/ERA5/E-OBS extracts. Internal and git-ignored; Climate DT raw data
+                                    may not be redistributed.
+
+REPRODUCE (from this folder; ROOT = this folder)
+  1. python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+  2. Credentials: ~/.polytopeapirc (DestinE, upgraded access for generation 2) and ~/.cdsapirc (CDS; accept
+     the ERA5 licence once on the CDS website). E-OBS needs no account.
+  3. sh scripts/01_fetch_dt_all.sh "$PWD"      (72 Polytope requests, about 1 h with 6 in parallel; resumable)
+  4. .venv/bin/python -I scripts/02_fetch_era5.py "$PWD"
+  5. .venv/bin/python -I scripts/03_fetch_eobs.py "$PWD"   (HTTP range reads, about 1 min)
+  6. .venv/bin/python -I scripts/04_analyse.py "$PWD"      -> results.json, data/derived/
+  7. .venv/bin/python -I scripts/05_figures.py "$PWD"      -> figures/
+
+ATTRIBUTION
+  This data is created based on data of the European Union, using the Destination Earth Platform, but has
+  been modified (point extraction, daily/annual aggregation, bias correction). Climate DT gen 2,
+  doi:10.21957/79c6af3105.
+  ERA5: generated using Copernicus Climate Change Service information (Hersbach et al. 2020, QJRMS 146:1999).
+  E-OBS v31.0e: EU-FP6 UERRA, Copernicus C3S and the ECA&D data providers (Cornes et al. 2018, JGR-A 123:9391).

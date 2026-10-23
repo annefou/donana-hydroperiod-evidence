@@ -1,0 +1,204 @@
+{
+ "n_pairs_last": 68,
+ "n_pairs_s2": 446,
+ "vs_LAST_EAP": {
+  "complete": {
+   "kappa": 0.2134,
+   "OA": 0.8297,
+   "PA_water": 0.601,
+   "UA_water": 0.1824,
+   "omission_water": 0.399,
+   "commission_water": 0.8176,
+   "ref_water_ha": 424639.5113,
+   "map_water_ha": 1398975.372,
+   "area_ha": 7711157.3308,
+   "kappa_ci95": [
+    0.09124221521165854,
+    0.3437592349459892
+   ],
+   "kappa_block_folds": [
+    0.248,
+    0.322,
+    0.171,
+    0.116,
+    0.132
+   ]
+  },
+  "marsh": {
+   "kappa": 0.2676,
+   "OA": 0.7823,
+   "PA_water": 0.4573,
+   "UA_water": 0.3518,
+   "omission_water": 0.5427,
+   "commission_water": 0.6482,
+   "ref_water_ha": 271401.6832,
+   "map_water_ha": 352729.8248,
+   "area_ha": 1727116.3371,
+   "kappa_ci95": [
+    0.12684324366594035,
+    0.4254231863339866
+   ],
+   "kappa_block_folds": [
+    0.308,
+    0.09,
+    0.506,
+    0.257,
+    0.216
+   ]
+  },
+  "lagoon": {
+   "kappa": 0.5434,
+   "OA": 0.7835,
+   "PA_water": 0.9183,
+   "UA_water": 0.5616,
+   "omission_water": 0.0817,
+   "commission_water": 0.4384,
+   "ref_water_ha": 3978.43,
+   "map_water_ha": 6505.1678,
+   "area_ha": 14676.9276,
+   "kappa_ci95": [
+    0.03415044078664107,
+    0.6508650028276661
+   ],
+   "kappa_block_folds": [
+    0.559,
+    0.0,
+    0.522,
+    0.606,
+    0.166
+   ]
+  },
+  "other": {
+   "kappa": 0.1785,
+   "OA": 0.8435,
+   "PA_water": 0.8539,
+   "UA_water": 0.1226,
+   "omission_water": 0.1461,
+   "commission_water": 0.8774,
+   "ref_water_ha": 149259.3981,
+   "map_water_ha": 1039740.3794,
+   "area_ha": 5969364.0662,
+   "kappa_ci95": [
+    0.03351005883626278,
+    0.3466092701001009
+   ],
+   "kappa_block_folds": [
+    0.192,
+    0.403,
+    0.048,
+    -0.001,
+    0.093
+   ]
+  }
+ },
+ "vs_S2_open_water": {
+  "complete": {
+   "kappa": 0.2442,
+   "OA": 0.8377,
+   "PA_water": 0.5191,
+   "UA_water": 0.2329,
+   "omission_water": 0.4809,
+   "commission_water": 0.7671,
+   "ref_water_ha": 3617232.176,
+   "map_water_ha": 8061887.9757,
+   "area_ha": 48817986.47,
+   "kappa_ci95": [
+    0.12050558727438129,
+    0.365131471742609
+   ],
+   "kappa_block_folds": [
+    0.279,
+    0.369,
+    0.194,
+    0.158,
+    0.145
+   ]
+  },
+  "marsh": {
+   "kappa": 0.2746,
+   "OA": 0.7788,
+   "PA_water": 0.4475,
+   "UA_water": 0.3775,
+   "omission_water": 0.5525,
+   "commission_water": 0.6225,
+   "ref_water_ha": 2059761.7695,
+   "map_water_ha": 2441767.9459,
+   "area_ha": 12013169.4865,
+   "kappa_ci95": [
+    0.15541159380586858,
+    0.4014578017676077
+   ],
+   "kappa_block_folds": [
+    0.338,
+    0.13,
+    0.444,
+    0.262,
+    0.223
+   ]
+  },
+  "lagoon": {
+   "kappa": 0.538,
+   "OA": 0.7873,
+   "PA_water": 0.8144,
+   "UA_water": 0.6082,
+   "omission_water": 0.1856,
+   "commission_water": 0.3918,
+   "ref_water_ha": 33637.5209,
+   "map_water_ha": 45038.1729,
+   "area_ha": 112340.3349,
+   "kappa_ci95": [
+    0.07016093631301623,
+    0.6290561874432193
+   ],
+   "kappa_block_folds": [
+    0.551,
+    -0.003,
+    0.471,
+    0.589,
+    0.237
+   ]
+  },
+  "other": {
+   "kappa": 0.2101,
+   "OA": 0.8571,
+   "PA_water": 0.6093,
+   "UA_water": 0.1666,
+   "omission_water": 0.3907,
+   "commission_water": 0.8334,
+   "ref_water_ha": 1523832.8856,
+   "map_water_ha": 5575081.8569,
+   "area_ha": 36692476.6487,
+   "kappa_ci95": [
+    0.04116386564334112,
+    0.3806601294096609
+   ],
+   "kappa_block_folds": [
+    0.219,
+    0.462,
+    0.059,
+    0.007,
+    0.094
+   ]
+  }
+ },
+ "flooded_veg_flag_vs_LAST": {
+  "flag_ha_total": 367230.77233733673,
+  "share_LAST_water": 0.32944401254850536
+ },
+ "marsh_PA_by_wind_last": {
+  "<4": 0.5786186043809962,
+  "<6": 0.6038311349155382,
+  ">=4": 0.657066169437871,
+  ">=6": 0.605730194065937,
+  "spearman": -0.008359735847616139,
+  "n": 68
+ },
+ "marsh_PA_by_wind_s2": {
+  "<4": 0.5523840400237424,
+  "<6": 0.571234885120219,
+  ">=4": 0.6035680522395191,
+  ">=6": 0.5805589169004699,
+  "spearman": 0.15146048478917407,
+  "n": 446
+ }
+}

@@ -14,7 +14,12 @@
 > **Fast and Automatic Data-Driven Thresholding for Inundation Mapping with Sentinel-2 Data** — replication study.
 > Reference paper: [10.3390/rs10060910](https://doi.org/10.3390/rs10060910)
 
-This is a self-contained replication of the headline claim of the reference paper. It produces a reproducible computational pipeline, a Zenodo-archived release with a citable DOI, and a FORRT-tagged nanopublication chain on the [Science Live platform](https://platform.sciencelive4all.org).
+**DRAFT, not reviewed.** LifeWatch ERIC evidence for Spain, and the technical side of the FAIR2Adapt Doñana transfer case. Two analyses for Natura 2000 site ES0000024 (Doñana):
+
+1. **Flooding regime** (`pipeline/flooding/`). Every Sentinel-2 scene (2017/18 onwards) is resampled onto HEALPix cells (healpix-geo, WGS84 ellipsoid, NESTED, depth 19, about 12 m) before classification: reflectance conservatively, scene classification by majority. Flooding is mapped with a re-implementation of Kordelas et al. (2018), Sentinel-1 is tested for cloudy dates, and results are validated against the LAST-EBD Landsat flood masks and hydroperiod maps (Díaz-Delgado et al., Zenodo, CC BY 4.0). Outputs: hydroperiod per cell and hydrological year, anomaly against 1984/85–2016/17, lagoon hydroperiod against groundwater (CHG piezometers) and rainfall, and inputs for the [Doñana Digital Twin](https://gitlab.lifewatch.dev/lfw024-donana-digital-twin).
+2. **Climate DT fitness test** (`pipeline/climate_dt/`). Whether the DestinE Climate Change Adaptation Digital Twin (IFS-NEMO, IFS-FESOM; historical then SSP3-7.0) reproduces Doñana rainfall and temperature statistics (E-OBS, ERA5), before and after bias correction. Verdict: usable after bias correction, as a complement to the EURO-CORDEX ensemble (`pipeline/climate_dt/REPORT.txt`).
+
+**Status (23 October 2026).** The scripts ran end to end in a work folder on 22 October 2026; summary results are in `results/` and figures in `figures/`. A full rerun from a clean clone has not been done yet. The Copernicus Land Water Cover Duration validation (`pixi run flood-wcd`) has not run: it needs a Copernicus Data Space token.
 
 ---
 
@@ -24,18 +29,13 @@ This is a self-contained replication of the headline claim of the reference pape
 git clone https://github.com/annefou/donana-hydroperiod-evidence.git
 cd donana-hydroperiod-evidence
 pixi install
-pixi run snakemake --cores 1
+pixi run flooding     # open data; ERA5 needs a CDS account (~/.cdsapirc). Long: every Sentinel-2 date 2017-2026
+pixi run climate-dt   # DestinE upgraded access (~/.polytopeapirc) and CDS account
 ```
 
-(Pixi resolves `pixi.toml` against the per-platform `pixi.lock`, installs the env under `.pixi/`, and provides `pixi run` for any task without needing an `activate` step.)
+Work files go to `work/` (gitignored). Raw Climate DT extracts are not redistributed (DestinE terms); only derived statistics are reported.
 
-Or with Docker:
-
-```bash
-docker run --rm ghcr.io/annefou/donana-hydroperiod-evidence:latest
-```
-
-The Jupyter Book version is at <https://annefou.github.io/donana-hydroperiod-evidence/>.
+**Inputs and licences.** Natura 2000 boundary (EEA). LAST-EBD flood masks and hydroperiod maps, ground-truth points (Zenodo, CC BY 4.0). ICTS-Doñana marsh water levels (CC BY 4.0). CHG piezometers (no explicit licence; CHG legal notice authorises reproduction citing the source; data "not official"). OpenStreetMap water polygons (ODbL). Sentinel-2 and Sentinel-1 (Copernicus terms; Earth Search and Microsoft Planetary Computer hosting). ERA5 (Copernicus licence). E-OBS (ECA&D terms). DestinE Climate DT (DestinE terms).
 
 ## Built from a template
 

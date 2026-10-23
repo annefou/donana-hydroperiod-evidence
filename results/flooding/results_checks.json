@@ -1,0 +1,119 @@
+{
+ "C1_rgb_overview_vs_10m": {
+  "n_dates": 100,
+  "Tfinal_diff_median": -0.054507473795617045,
+  "Tfinal_absdiff_p90": 1.881494407115879,
+  "open_water_rel_diff_median_pct": -0.11016956500556514,
+  "open_water_rel_absdiff_p90_pct": 6.827384569253287,
+  "note": "Tfinal in stretched units (0-255)"
+ },
+ "C2_stability": {
+  "2017/18": {
+   "stable_dry_false_flood_ge30d_pct": 10.30265427510351,
+   "stable_dry_any_flood_pct": 29.40533317669321,
+   "stable_wet_false_dry_lt300d_pct": 29.71213898835533
+  },
+  "2018/19": {
+   "stable_dry_false_flood_ge30d_pct": 6.451043528510653,
+   "stable_dry_any_flood_pct": 23.279030534630813,
+   "stable_wet_false_dry_lt300d_pct": 29.587486675148572
+  },
+  "2019/20": {
+   "stable_dry_false_flood_ge30d_pct": 3.460890611807389,
+   "stable_dry_any_flood_pct": 20.162192292881546,
+   "stable_wet_false_dry_lt300d_pct": 30.829045607348313
+  },
+  "2020/21": {
+   "stable_dry_false_flood_ge30d_pct": 3.4557636179407676,
+   "stable_dry_any_flood_pct": 28.46191530858256,
+   "stable_wet_false_dry_lt300d_pct": 31.41243637629775
+  },
+  "2021/22": {
+   "stable_dry_false_flood_ge30d_pct": 3.6743017046689768,
+   "stable_dry_any_flood_pct": 35.8007088938263,
+   "stable_wet_false_dry_lt300d_pct": 33.047884455965175
+  },
+  "2022/23": {
+   "stable_dry_false_flood_ge30d_pct": 0.9633526813170433,
+   "stable_dry_any_flood_pct": 23.838048655644375,
+   "stable_wet_false_dry_lt300d_pct": 33.91538606483196
+  },
+  "2023/24": {
+   "stable_dry_false_flood_ge30d_pct": 0.6180975172342917,
+   "stable_dry_any_flood_pct": 14.07814982616204,
+   "stable_wet_false_dry_lt300d_pct": 33.63106112236175
+  },
+  "2024/25": {
+   "stable_dry_false_flood_ge30d_pct": 8.352698676426623,
+   "stable_dry_any_flood_pct": 31.495419561944587,
+   "stable_wet_false_dry_lt300d_pct": 29.891581745153587
+  },
+  "2025/26": {
+   "stable_dry_false_flood_ge30d_pct": 10.832112985319293,
+   "stable_dry_any_flood_pct": 28.924413340932226,
+   "stable_wet_false_dry_lt300d_pct": 34.737982412622195
+  }
+ },
+ "C2_areas_ha": {
+  "stable_dry": 84128.91390532684,
+  "stable_wet": 310.32201145935056
+ },
+ "C3_detection_by_size": [
+  {
+   "size": "<0.5",
+   "n": 21,
+   "lagoons": 5,
+   "detected_any": 0.619,
+   "detected_half": 0.286
+  },
+  {
+   "size": "0.5-1",
+   "n": 32,
+   "lagoons": 3,
+   "detected_any": 0.938,
+   "detected_half": 0.719
+  },
+  {
+   "size": "1-2",
+   "n": 46,
+   "lagoons": 4,
+   "detected_any": 1.0,
+   "detected_half": 0.783
+  },
+  {
+   "size": "2-5",
+   "n": 48,
+   "lagoons": 6,
+   "detected_any": 0.958,
+   "detected_half": 0.75
+  },
+  {
+   "size": "5-10",
+   "n": 35,
+   "lagoons": 4,
+   "detected_any": 0.943,
+   "detected_half": 0.886
+  },
+  {
+   "size": ">10",
+   "n": 85,
+   "lagoons": 4,
+   "detected_any": 1.0,
+   "detected_half": 0.941
+  }
+ ],
+ "C4_ebd_press_release": {
+  "2024-12-29": {
+   "ebd_pct": 7.9,
+   "s2_date": "2024-12-31",
+   "s2_open_water_pct": 16.2,
+   "s2_valid_marsh_pct": 99.7
+  },
+  "2025-03-19": {
+   "ebd_pct": 97.4,
+   "s2_date": "2025-03-23",
+   "s2_open_water_pct": 96.8,
+   "s2_valid_marsh_pct": 57.3
+  }
+ }
+}

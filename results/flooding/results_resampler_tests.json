@@ -1,0 +1,12 @@
+{
+ "T1_const_maxdev_10m": 0.0,
+ "T2_integral_rel_err_10m": 0.0,
+ "T1_const_maxdev_20m": 0.0,
+ "T2_integral_rel_err_20m": 0.0,
+ "T3_weight_maxabs_err_10m_median": 0.005104863730760106,
+ "T3_weight_maxabs_err_10m_p99": 0.014071390644161364,
+ "T3_weight_maxabs_err_20m_median": 0.003035153149068919,
+ "T3_weight_maxabs_err_20m_p99": 0.010311791174797226,
+ "T3_note": "Monte-Carlo with ~25,800 points per cell: sampling s.e. of a share ~0.003",
+ "T4_majority_agree_20m": 1.0
+}

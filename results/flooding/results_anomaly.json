@@ -1,0 +1,92 @@
+{
+ "baseline_years": "1984/85-2016/17",
+ "baseline_marsh_mean_hp": 93.6630683903803,
+ "baseline_marsh_sd": 52.786426650382275,
+ "baseline_min": 17.74859531131274,
+ "baseline_max": 204.48113642602533,
+ "offset_S2_minus_LAST_2017_18_days": -44.12279098768407,
+ "years": {
+  "2017/18": {
+   "marsh_mean_hp": 106.54970300428327,
+   "anomaly_days": 12.88663461390297,
+   "anomaly_days_offset_corrected": 57.00942560158704,
+   "z": 0.2441278076891694,
+   "z_offset_corrected": 1.0800016068368246,
+   "rank_in_baseline_pct": 60.60606060606061
+  },
+  "2018/19": {
+   "marsh_mean_hp": 74.59666248982937,
+   "anomaly_days": -19.066405900550933,
+   "anomaly_days_offset_corrected": 25.056385087133137,
+   "z": -0.36119902615936694,
+   "z_offset_corrected": 0.4746747729882883,
+   "rank_in_baseline_pct": 33.33333333333333
+  },
+  "2019/20": {
+   "marsh_mean_hp": 48.15210210872073,
+   "anomaly_days": -45.51096628165957,
+   "anomaly_days_offset_corrected": -1.3881752939755003,
+   "z": -0.8621717583402662,
+   "z_offset_corrected": -0.026297959192610878,
+   "rank_in_baseline_pct": 27.27272727272727
+  },
+  "2020/21": {
+   "marsh_mean_hp": 69.93915729435751,
+   "anomaly_days": -23.72391109602279,
+   "anomaly_days_offset_corrected": 20.39887989166128,
+   "z": -0.4494320339801024,
+   "z_offset_corrected": 0.38644176516755285,
+   "rank_in_baseline_pct": 30.303030303030305
+  },
+  "2021/22": {
+   "marsh_mean_hp": 26.59495768079065,
+   "anomaly_days": -67.06811070958966,
+   "anomaly_days_offset_corrected": -22.94531972190559,
+   "z": -1.2705559926190602,
+   "z_offset_corrected": -0.4346821934714049,
+   "rank_in_baseline_pct": 12.121212121212121
+  },
+  "2022/23": {
+   "marsh_mean_hp": 30.713587177464962,
+   "anomaly_days": -62.949481212915344,
+   "anomaly_days_offset_corrected": -18.826690225231275,
+   "z": -1.1925315882782808,
+   "z_offset_corrected": -0.35665778913062557,
+   "rank_in_baseline_pct": 12.121212121212121
+  },
+  "2023/24": {
+   "marsh_mean_hp": 54.171591747483184,
+   "anomaly_days": -39.49147664289712,
+   "anomaly_days_offset_corrected": 4.631314344786951,
+   "z": -0.7481369577156465,
+   "z_offset_corrected": 0.08773684143200876,
+   "rank_in_baseline_pct": 30.303030303030305
+  },
+  "2024/25": {
+   "marsh_mean_hp": 147.32522185884952,
+   "anomaly_days": 53.662153468469214,
+   "anomaly_days_offset_corrected": 97.78494445615328,
+   "z": 1.0165899999991872,
+   "z_offset_corrected": 1.8524637991468424,
+   "rank_in_baseline_pct": 81.81818181818183
+  },
+  "2025/26": {
+   "marsh_mean_hp": 141.83684764511574,
+   "anomaly_days": 48.173779254735436,
+   "anomaly_days_offset_corrected": 92.2965702424195,
+   "z": 0.91261679017984,
+   "z_offset_corrected": 1.7484905893274953,
+   "rank_in_baseline_pct": 78.78787878787878
+  }
+ },
+ "theil_sen_LAST_1984_2016_days_per_year": [
+  0.3335049760001284,
+  -1.8165052657780516,
+  2.5376484810742066
+ ],
+ "theil_sen_S2_era_days_per_year": [
+  2.8117509531824627,
+  -12.20351523664192,
+  19.834623950025758
+ ]
+}

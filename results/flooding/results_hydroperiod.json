@@ -1,0 +1,208 @@
+{
+ "years": [
+  {
+   "hydro_year": "2017/18",
+   "n_s2_dates_used": 61,
+   "marsh_mean_hp_s2s1": 87.30987260933215,
+   "marsh_mean_hp_days": 106.54970300428326,
+   "marsh_mean_hp_open_plus_veg": 106.55099892971221,
+   "marsh_flooded_ge1d_ha": 29831.3709353714,
+   "marsh_flooded_ge90d_ha": 15650.153550955201,
+   "marsh_median_n_valid": 48.0,
+   "marsh_median_max_gap": 20.0,
+   "marsh_p90_max_gap": 40.0,
+   "marsh_halfsample_mad_days_median": 14.600000381469727,
+   "marsh_halfsample_shift_of_mean_days": [
+    10.02,
+    -15.54,
+    -0.3,
+    -0.17,
+    -5.25
+   ]
+  },
+  {
+   "hydro_year": "2018/19",
+   "n_s2_dates_used": 63,
+   "marsh_mean_hp_s2s1": 67.77753313347233,
+   "marsh_mean_hp_days": 74.59666248982937,
+   "marsh_mean_hp_open_plus_veg": 74.59666248982937,
+   "marsh_flooded_ge1d_ha": 25707.21302074585,
+   "marsh_flooded_ge90d_ha": 11706.928137390136,
+   "marsh_median_n_valid": 55.0,
+   "marsh_median_max_gap": 20.0,
+   "marsh_p90_max_gap": 25.0,
+   "marsh_halfsample_mad_days_median": 8.399999618530273,
+   "marsh_halfsample_shift_of_mean_days": [
+    -5.42,
+    1.64,
+    -4.21,
+    2.89,
+    -1.3
+   ]
+  },
+  {
+   "hydro_year": "2019/20",
+   "n_s2_dates_used": 57,
+   "marsh_mean_hp_s2s1": 46.38582812328403,
+   "marsh_mean_hp_days": 48.152102108720726,
+   "marsh_mean_hp_open_plus_veg": 48.152102108720726,
+   "marsh_flooded_ge1d_ha": 21825.19026973114,
+   "marsh_flooded_ge90d_ha": 6066.851572636413,
+   "marsh_median_n_valid": 48.0,
+   "marsh_median_max_gap": 30.0,
+   "marsh_p90_max_gap": 45.0,
+   "marsh_halfsample_mad_days_median": 9.0,
+   "marsh_halfsample_shift_of_mean_days": [
+    -5.41,
+    -3.13,
+    -0.62,
+    -1.8,
+    4.8
+   ]
+  },
+  {
+   "hydro_year": "2020/21",
+   "n_s2_dates_used": 56,
+   "marsh_mean_hp_s2s1": 61.14354877374981,
+   "marsh_mean_hp_days": 69.9391572943575,
+   "marsh_mean_hp_open_plus_veg": 69.93917930984362,
+   "marsh_flooded_ge1d_ha": 25219.59132280731,
+   "marsh_flooded_ge90d_ha": 11354.467571748351,
+   "marsh_median_n_valid": 48.0,
+   "marsh_median_max_gap": 30.0,
+   "marsh_p90_max_gap": 40.0,
+   "marsh_halfsample_mad_days_median": 10.800000190734863,
+   "marsh_halfsample_shift_of_mean_days": [
+    2.09,
+    -4.65,
+    -2.7,
+    -1.37,
+    1.21
+   ]
+  },
+  {
+   "hydro_year": "2021/22",
+   "n_s2_dates_used": 56,
+   "marsh_mean_hp_s2s1": 38.899032708118995,
+   "marsh_mean_hp_days": 26.59495768079065,
+   "marsh_mean_hp_open_plus_veg": 26.59495768079065,
+   "marsh_flooded_ge1d_ha": 13943.626003198242,
+   "marsh_flooded_ge90d_ha": 2397.4859441513063,
+   "marsh_median_n_valid": 52.0,
+   "marsh_median_max_gap": 30.0,
+   "marsh_p90_max_gap": 40.0,
+   "marsh_halfsample_mad_days_median": 0.0,
+   "marsh_halfsample_shift_of_mean_days": [
+    -3.69,
+    1.34,
+    -5.36,
+    -6.5,
+    -4.28
+   ]
+  },
+  {
+   "hydro_year": "2022/23",
+   "n_s2_dates_used": 57,
+   "marsh_mean_hp_s2s1": 40.741328753197195,
+   "marsh_mean_hp_days": 30.71358717746496,
+   "marsh_mean_hp_open_plus_veg": 30.713644718123664,
+   "marsh_flooded_ge1d_ha": 16814.967624757384,
+   "marsh_flooded_ge90d_ha": 3362.235328245544,
+   "marsh_median_n_valid": 45.0,
+   "marsh_median_max_gap": 30.0,
+   "marsh_p90_max_gap": 35.0,
+   "marsh_halfsample_mad_days_median": 4.800000190734863,
+   "marsh_halfsample_shift_of_mean_days": [
+    -4.44,
+    3.24,
+    0.23,
+    1.26,
+    -0.82
+   ]
+  },
+  {
+   "hydro_year": "2023/24",
+   "n_s2_dates_used": 53,
+   "marsh_mean_hp_s2s1": 50.22607495140183,
+   "marsh_mean_hp_days": 54.171591747483184,
+   "marsh_mean_hp_open_plus_veg": 54.171591747483184,
+   "marsh_flooded_ge1d_ha": 24460.417753137208,
+   "marsh_flooded_ge90d_ha": 5398.832511355591,
+   "marsh_median_n_valid": 44.0,
+   "marsh_median_max_gap": 25.0,
+   "marsh_p90_max_gap": 30.0,
+   "marsh_halfsample_mad_days_median": 8.199999809265137,
+   "marsh_halfsample_shift_of_mean_days": [
+    -9.52,
+    -0.75,
+    -1.27,
+    -1.91,
+    -0.73
+   ]
+  },
+  {
+   "hydro_year": "2024/25",
+   "n_s2_dates_used": 66,
+   "marsh_mean_hp_s2s1": 127.96245388519164,
+   "marsh_mean_hp_days": 147.32522185884952,
+   "marsh_mean_hp_open_plus_veg": 147.32522185884952,
+   "marsh_flooded_ge1d_ha": 30448.616094029236,
+   "marsh_flooded_ge90d_ha": 24059.15983006134,
+   "marsh_median_n_valid": 56.0,
+   "marsh_median_max_gap": 22.0,
+   "marsh_p90_max_gap": 30.0,
+   "marsh_halfsample_mad_days_median": 10.600000381469727,
+   "marsh_halfsample_shift_of_mean_days": [
+    -3.01,
+    2.6,
+    6.46,
+    -0.72,
+    -6.72
+   ]
+  },
+  {
+   "hydro_year": "2025/26",
+   "n_s2_dates_used": 82,
+   "marsh_mean_hp_s2s1": 114.40258336826038,
+   "marsh_mean_hp_days": 141.8368476451157,
+   "marsh_mean_hp_open_plus_veg": 141.83685014689684,
+   "marsh_flooded_ge1d_ha": 30212.97940049591,
+   "marsh_flooded_ge90d_ha": 25631.665738630676,
+   "marsh_median_n_valid": 66.0,
+   "marsh_median_max_gap": 35.0,
+   "marsh_p90_max_gap": 35.0,
+   "marsh_halfsample_mad_days_median": 11.399999618530273,
+   "marsh_halfsample_shift_of_mean_days": [
+    0.26,
+    4.42,
+    -6.11,
+    -1.77,
+    -1.32
+   ]
+  }
+ ],
+ "last_overlap": {
+  "2017/18": {
+   "n_last_masks": 28,
+   "marsh_mean_hp_last_rule": 140.76641940238707,
+   "marsh_mean_hp_s2": 106.54970300428326,
+   "s2_minus_last_mean_days": -34.21671639810381,
+   "mae_days": 38.19290809671596,
+   "pearson_r": 0.8278918094373199,
+   "our_rule_vs_LAST_H1718_mae_days": 18.209492538039125,
+   "our_rule_vs_LAST_H1718_bias_days": -9.906074589580248,
+   "LAST_H1718_marsh_mean": 150.67249399196734,
+   "s2_vs_LAST_H1718_mae_days": 46.70708560331719,
+   "s2_vs_LAST_H1718_bias_days": -44.12279098768406,
+   "s2_vs_LAST_H1718_r": 0.8278359875156421
+  },
+  "2018/19": {
+   "n_last_masks": 28,
+   "marsh_mean_hp_last_rule": 97.15397714271509,
+   "marsh_mean_hp_s2": 74.59666248982937,
+   "s2_minus_last_mean_days": -22.55731465288573,
+   "mae_days": 28.09383739939364,
+   "pearson_r": 0.8964044870688908
+  }
+ }
+}
