@@ -2,13 +2,13 @@
 
 > This is a working scratchpad for the paper-analysis phase. The output of this file feeds the Quote / AIDA / Claim drafts. It is not itself a nanopub.
 
-**Reference paper:** {{PAPER_TITLE}}
+**Reference paper:** Fast and Automatic Data-Driven Thresholding for Inundation Mapping with Sentinel-2 Data
 
-**DOI:** {{PAPER_DOI}}
+**DOI:** 10.3390/rs10060910
 
 **Authors:** _add._
 
-**Year:** {{PAPER_YEAR}}
+**Year:** 2018
 
 ## Headline claim
 
