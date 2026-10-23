@@ -33,9 +33,9 @@ pixi run flooding     # open data; ERA5 needs a CDS account (~/.cdsapirc). Long:
 pixi run climate-dt   # DestinE upgraded access (~/.polytopeapirc) and CDS account
 ```
 
-Work files go to `work/` (gitignored). Raw Climate DT extracts are not redistributed (DestinE terms); only derived statistics are reported.
+This repository publishes code, plots and summary statistics only; input data stay in `work/` (gitignored) and are downloaded from their sources. Figure sources and caveats: `figures/README.md`. CHG piezometer data are reproduced citing the source under the CHG legal notice and are not official data. Raw Climate DT extracts are not redistributed (DestinE terms); only derived statistics are reported.
 
-**Inputs and licences.** Natura 2000 boundary (EEA). LAST-EBD flood masks and hydroperiod maps, ground-truth points (Zenodo, CC BY 4.0). ICTS-Doñana marsh water levels (CC BY 4.0). CHG piezometers (no explicit licence; CHG legal notice authorises reproduction citing the source; data "not official"). OpenStreetMap water polygons (ODbL). Sentinel-2 and Sentinel-1 (Copernicus terms; Earth Search and Microsoft Planetary Computer hosting). ERA5 (Copernicus licence). E-OBS (ECA&D terms). DestinE Climate DT (DestinE terms).
+**Inputs and licences.** Natura 2000 boundary (EEA). LAST-EBD flood masks and hydroperiod maps, ground-truth points (Zenodo, CC BY 4.0). ICTS-Doñana marsh water levels (CC BY 4.0). CHG piezometers (no explicit licence; CHG legal notice authorises reproduction citing the source; data "not official"). OpenStreetMap water polygons (ODbL). Sentinel-2 and Sentinel-1 (Copernicus terms; Earth Search and Microsoft Planetary Computer hosting). ERA5 (Copernicus licence). E-OBS (ECA&D data policy: non-commercial research and education only; used here only as a research cross-check, cite Cornes et al. 2018). DestinE Climate DT (DestinE terms).
 
 ## Built from a template
 
