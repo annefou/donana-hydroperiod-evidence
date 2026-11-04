@@ -14,55 +14,26 @@
 # ---
 
 # %% [markdown]
-# # 02 — Data clean
+# # 02 — Flood mapping and its validation
 #
-# This notebook tidies the raw data from `data/raw/` into an analysis-ready
-# format in `data/clean/`. Document every transformation: filters, renames,
-# joins, deduplications, projections, etc. The cleaned data is what the
-# analysis notebook consumes.
+# Flooding is mapped with a re-implementation of Kordelas et al. 2018 on every Sentinel-2 date, and checked against
+# the LAST-EBD Landsat flood masks (same-day pairs) and the 936 field points of 24 April 2017. Kappa and overall
+# accuracy (OA) by stratum; three variants: open water, open water plus flooded vegetation, a fixed B11 threshold.
 
 # %%
+import json
 from pathlib import Path
 
 import pandas as pd
 
-# %%
-RAW_DIR = Path("../data/raw")
-CLEAN_DIR = Path("../data/clean")
-CLEAN_DIR.mkdir(parents=True, exist_ok=True)
+R = Path("../results/flooding")
+v = json.loads((R / "results_validation.json").read_text())
+print("same-day pairs:", v["n_pairs"], v["pairs_by_sensor"])
+pd.DataFrame({(var, s): {k: x["EAP"].get(k) for k in ("kappa", "OA")} for var, d in v["combined"].items()
+              for s, x in d.items()}).T.round(3)
 
 # %% [markdown]
-# ## Load raw data
+# Sentinel-1 for cloudy dates, against LAST-EBD and against Sentinel-2 open water:
 
 # %%
-# Replace with your actual file(s):
-# raw = pd.read_csv(RAW_DIR / "dataset.csv")
-# Or for NetCDF: ds = xr.open_dataset(RAW_DIR / "dataset.nc")
-raw = None
-
-# %% [markdown]
-# ## Apply cleaning steps
-#
-# Document each step. Common patterns:
-#
-# - Filter by date range, region, or quality flag.
-# - Rename columns to a stable schema.
-# - Coerce dtypes.
-# - Drop or impute missing values, with a recorded count.
-# - Join external lookup tables (e.g. species → genus).
-
-# %%
-# Example skeleton:
-# clean = (
-#     raw
-#     .pipe(lambda df: df[df["year"].between(2000, 2020)])
-#     .rename(columns={"raw_col": "clean_col"})
-#     .dropna(subset=["clean_col"])
-# )
-
-# %% [markdown]
-# ## Persist clean data
-
-# %%
-# Example: clean.to_parquet(CLEAN_DIR / "dataset.parquet")
-# print(f"Wrote {len(clean):,} rows to {CLEAN_DIR / 'dataset.parquet'}")
+print(json.dumps(json.loads((R / "results_validation_s1.json").read_text()), indent=1)[:2500])

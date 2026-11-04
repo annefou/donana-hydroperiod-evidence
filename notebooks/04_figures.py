@@ -14,50 +14,31 @@
 # ---
 
 # %% [markdown]
-# # 04 — Figures
+# # 04 — Figures and the Climate DT fitness test
 #
-# This notebook produces the figures used in the Jupyter Book. Each figure is
-# saved to `figures/` as a high-DPI PNG **and** displayed inline (so MyST
-# renders the figure inside the Jupyter Book — see
-# `docs/cicd-conventions.md`).
+# Written by `pipeline/flooding/12_figures.py` and `pipeline/climate_dt/05_figures.py`, committed in `figures/`.
 #
-# **Inline display rule:** always pair `fig.savefig(...)` with `plt.show()`.
-# Without `plt.show()`, MyST builds an empty cell. Don't use
-# `matplotlib.use('Agg')` — it blocks inline display.
+# ![Hydroperiod by year](../figures/flooding/fig1_hydroperiod_years.png)
 #
-# **Layout check:** call `assert_layout(fig)` (`scripts/figcheck.py`) before
-# `fig.savefig(...)`. It fails the notebook — and so the pipeline — when two text
-# labels overlap or nearly touch, or when a legend covers data. For labels at the
-# end of lines, `spread_labels(ax, [(x, y, text), ...])` keeps them apart; call it
-# after `fig.tight_layout()`.
+# ![Latest hydroperiod](../figures/flooding/fig2_hydroperiod_latest.png)
+#
+# ![Marsh series and anomaly](../figures/flooding/fig3_marsh_series_anomaly.png)
+#
+# ![Validation](../figures/flooding/fig4_validation.png)
+#
+# ![Lagoons and groundwater](../figures/flooding/fig5_lagoon_groundwater.png)
+#
+# ![Flooded area](../figures/flooding/fig6_flooded_area.png)
+#
+# ## Climate DT fitness test
+# Does the DestinE Climate Change Adaptation Digital Twin (generation 2, IFS-NEMO and IFS-FESOM) reproduce Doñana
+# rainfall and temperature statistics? Prototype test: one site, one realisation per model, 34 hydrological years.
+# Verdict (`pipeline/climate_dt/REPORT.txt`): usable after bias correction, not as-is; both models as a two-member
+# envelope, with E-OBS and ERA5 as reference.
+#
+# ![Annual rainfall](../figures/climate_dt/fig1_annual_rainfall.png)
+#
+# ![Seasonal cycle](../figures/climate_dt/fig2_seasonal_cycle.png)
 
 # %%
-import sys
-from pathlib import Path
-
-import matplotlib.pyplot as plt
-import pandas as pd
-
-sys.path.insert(0, str(Path("../scripts").resolve()))
-from figcheck import assert_layout  # noqa: E402
-
-# %%
-RESULTS_DIR = Path("../results")
-FIGURES_DIR = Path("../figures")
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
-
-# %% [markdown]
-# ## Main result figure
-
-# %%
-# summary = pd.read_csv(RESULTS_DIR / "summary.csv")
-
-# fig, ax = plt.subplots(figsize=(8, 5))
-# ax.bar(summary["metric"], summary["value"])
-# ax.set_title("Replication headline result")
-# ax.set_ylabel("Value")
-# fig.tight_layout()
-# assert_layout(fig)  # no overlapping labels, no legend over data
-#
-# fig.savefig(FIGURES_DIR / "main_result.png", dpi=150, bbox_inches="tight")
-# plt.show()  # required for MyST inline display
+print(open("../pipeline/climate_dt/REPORT.txt").read()[:3000])

@@ -14,90 +14,44 @@
 # ---
 
 # %% [markdown]
-# # 01 — Data download
+# # 01 — Data
 #
-# This notebook fetches all input data needed by the replication pipeline.
-# Every dataset is downloaded from a citable source (Zenodo, GBIF, Copernicus,
-# etc.) and a record of the source is logged into `data/raw/sources.json`
-# alongside the data files.
+# **DRAFT, not reviewed; prototype (TRL 3: the scripts ran end to end on 22 October 2026, but not yet from a clean
+# clone).** LifeWatch ERIC evidence for Doñana (Natura 2000 ES0000024) and the technical side of the FAIR2Adapt
+# Doñana transfer case. Reference method: Kordelas et al. 2018, *Remote Sensing* 10(6):910,
+# [doi:10.3390/rs10060910](https://doi.org/10.3390/rs10060910).
 #
-# **Self-contained data:** The repository ships without input data. This
-# notebook is the only path that brings data into `data/raw/`. A user cloning
-# the repo and running this notebook should get a complete reproducible run.
+# The pipeline (`pipeline/`, `Snakefile`) is **not** rerun when this book is built: it reads every Sentinel-2 date
+# 2017–2026 and needs a CDS account (ERA5) and DestinE upgraded access (Climate DT). These pages read the summary
+# results committed in `results/` and the figures in `figures/`.
 #
-# **Credentials:** if your replication uses a credentialled API, document the
-# credential setup at the top of this notebook, including:
+# | Input | Source | Licence | Account |
+# |---|---|---|---|
+# | Sentinel-2 L2A, Sentinel-1 | Earth Search, Microsoft Planetary Computer | Copernicus terms | none |
+# | LAST-EBD Landsat flood masks and hydroperiod maps; field points 24 Apr 2017 | Díaz-Delgado et al., Zenodo | CC BY 4.0 | none |
+# | ICTS-Doñana marsh water levels | ICTS-Doñana | CC BY 4.0 | none |
+# | CHG piezometers | Confederación Hidrográfica del Guadalquivir | reproduction citing the source; "not official" data | none |
+# | Natura 2000 boundary; OpenStreetMap water | EEA; OSM | EEA terms; ODbL | none |
+# | ERA5 | Copernicus Climate Data Store | Copernicus licence | **CDS** |
+# | E-OBS v31.0e | ECA&D | non-commercial research only | none |
+# | Climate DT generation 2 (IFS-NEMO, IFS-FESOM) | DestinE Platform | DestinE terms: derived statistics only | **DestinE upgraded access** |
+# | Copernicus Land Water Cover Duration (check not yet run) | Copernicus Data Space | Copernicus terms | **CDSE token** |
 #
-# - Where the user gets the credential (URL).
-# - Where it lives on disk (or which env var Claude expects).
-# - The corresponding GitHub Actions secret name(s) for CI.
+# Grid: HEALPix depth 19 (~12 m), healpix-geo, WGS84 ellipsoid, NESTED; reflectance resampled conservatively and the
+# scene classification by majority, before classification.
 
 # %%
 import json
 from pathlib import Path
 
-import requests
+import pandas as pd
 
-# %%
-RAW_DIR = Path("../data/raw")
-RAW_DIR.mkdir(parents=True, exist_ok=True)
-
-# %% [markdown]
-# ## Source registry
-#
-# Replace the placeholder source(s) below with your actual data sources. Each
-# entry should record: name, URL or DOI, license, accessed-on date, and SHA-256
-# of the downloaded file (computed and added after first download).
-
-# %%
-SOURCES = [
-    {
-        "name": "<dataset-name>",
-        "doi": "<10.x/y or null>",
-        "url": "<https://...>",
-        "license": "<CC-BY-4.0 / CC-BY-NC-4.0 / public-domain / ...>",
-        "accessed_on": "2026-10-22",
-        "sha256": None,  # filled after first download
-    },
-    # Add more sources here as needed.
-]
-
+R = Path("../results")
+pd.DataFrame([{"file": str(f.relative_to(R)), "bytes": f.stat().st_size} for f in sorted(R.rglob("*.json"))])
 
 # %% [markdown]
-# ## Download
+# Resampler checks on the HEALPix grid (`pipeline/flooding/01b_test_resampler.py`): a constant field stays constant,
+# the integral is preserved, and the overlap weights match a Monte-Carlo estimate.
 
 # %%
-def download_source(source: dict) -> Path:
-    """Fetch a single source into data/raw/. Replace with your real implementation."""
-    # Example skeleton — adapt to your data source's API:
-    # response = requests.get(source["url"], stream=True, timeout=300)
-    # response.raise_for_status()
-    # out_path = RAW_DIR / Path(source["url"]).name
-    # with open(out_path, "wb") as f:
-    #     for chunk in response.iter_content(chunk_size=8192):
-    #         f.write(chunk)
-    # return out_path
-    raise NotImplementedError(
-        "Implement download for: " + source["name"] + ". "
-        "See data/README.md for common patterns."
-    )
-
-
-# %%
-# Uncomment when SOURCES is populated:
-# for source in SOURCES:
-#     print(f"Fetching {source['name']}...")
-#     path = download_source(source)
-#     print(f"  -> {path}")
-
-# %% [markdown]
-# ## Source log
-#
-# Persist the source registry to disk so that downstream notebooks can audit
-# what data was used and when.
-
-# %%
-with open(RAW_DIR / "sources.json", "w") as f:
-    json.dump({"sources": SOURCES}, f, indent=2)
-
-print(f"Logged {len(SOURCES)} source(s) to {RAW_DIR / 'sources.json'}")
+pd.Series(json.loads((R / "flooding/results_resampler_tests.json").read_text())).to_frame("value")

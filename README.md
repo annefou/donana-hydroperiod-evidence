@@ -23,19 +23,114 @@
 
 ---
 
-## Quick start
+## Install and run
+
+You can read the results without installing anything: the summary tables are in `results/`, the figures in
+`figures/`, and the [Jupyter Book](https://annefou.github.io/donana-hydroperiod-evidence/) shows both. Rerunning the analysis needs the
+steps below. Status: prototype (TRL 3). The scripts ran end to end on 22 October 2026 in a work folder; a full rerun
+from a clean clone has not been done yet.
+
+### Install
+
+1. Install pixi (<https://pixi.sh>): `curl -fsSL https://pixi.sh/install.sh | bash`.
+2. Get the code and the pinned environment:
+
+   ```bash
+   git clone https://github.com/annefou/donana-hydroperiod-evidence.git
+   cd donana-hydroperiod-evidence
+   pixi install
+   ```
+
+   Pixi installs everything from `pixi.toml` and `pixi.lock` into `.pixi/`; `pixi run <task>` runs a task in that
+   environment without activating it.
+
+### Accounts each step needs
+
+| What you run | Data | Account needed |
+| --- | --- | --- |
+| `pixi run snakemake --cores 1` (flooding regime) | Sentinel-2 L2A and Sentinel-1 (Earth Search, Microsoft Planetary Computer), LAST-EBD flood masks (Zenodo), ICTS-Doñana levels, CHG piezometers, Natura 2000 boundary, OpenStreetMap | none |
+| | ERA5 (rainfall for the hydroperiod drivers) | **Copernicus Climate Data Store** (free) |
+| `pixi run snakemake --cores 1 climate_dt` (Climate DT fitness test) | Climate DT generation 2, IFS-NEMO and IFS-FESOM | **DestinE upgraded access** |
+| | ERA5; E-OBS v31.0e (ECA&D, non-commercial research only) | **Copernicus Climate Data Store**; none for E-OBS |
+| `pixi run snakemake --cores 1 flood_wcd` (not run yet) | Copernicus Land Water Cover Duration | **Copernicus Data Space** (free) |
+
+Accounts are read from your home directory or the environment, never from the repository, and nothing in `work/`
+(the downloads) is committed. Set up only the ones for the steps you run.
+
+### Copernicus Climate Data Store (ERA5)
+
+1. Create a free account at <https://cds.climate.copernicus.eu> and log in.
+2. Accept the licence of each dataset used, on the dataset page under *Download* → *Terms of use*: `reanalysis-era5-single-levels-monthly-means` (flooding), `reanalysis-era5-single-levels` and `reanalysis-era5-single-levels-timeseries` (Climate DT test).
+3. Copy your personal access token from your profile page into `~/.cdsapirc`:
+
+   ```
+   url: https://cds.climate.copernicus.eu/api
+   key: <your personal access token>
+   ```
+
+   `cdsapi` also reads `CDSAPI_URL` and `CDSAPI_KEY` from the environment. Requests wait in the CDS queue (minutes to
+   hours); the downloads are resumable.
+
+### Destination Earth: Climate DT (DestinE upgraded access)
+
+1. Create an account on the DestinE Platform, <https://platform.destine.eu/>, and request **upgraded access**, which
+   includes the Climate Change Adaptation Digital Twin. Eligibility and terms are set by the platform (at the time of
+   writing: users in EU Member States and in countries associated with the Digital Europe Programme; check the current
+   terms of use before you apply). Upgraded access is not automatic: allow time for the request to be reviewed.
+2. Get the Polytope key (an offline token) with ECMWF's script; it asks for your DestinE user name and password and
+   writes `{"user_key": "<offline token>"}` to `~/.polytopeapirc`:
+
+   ```bash
+   curl -sO https://raw.githubusercontent.com/destination-earth-digital-twins/polytope-examples/main/desp-authentication.py
+   pixi run python desp-authentication.py
+   ```
+
+   `polytope-client` also reads `POLYTOPE_USER_KEY` from the environment. A *DestinE Data Lake* (DEDL) API key is a
+   different credential and is refused by Polytope (HTTP 401).
+3. Authentication is not authorisation: a valid key can still be refused the data if upgraded access has not been
+   granted yet; the first request tells you.
+4. Terms: raw Climate DT data may not be redistributed. The pipeline keeps downloads in `work/` (not in git) and
+   commits only derived statistics; keep it that way in any fork.
+
+### Copernicus Data Space (only for `flood_wcd`)
+
+The Copernicus Land Water Cover Duration check (`pipeline/flooding/13_wcd_validate.py`) needs a free Copernicus Data
+Space account (<https://dataspace.copernicus.eu>) and its access token in the environment variable `CDSE_TOKEN`. This
+check has not run yet.
+
+### Run
 
 ```bash
-git clone https://github.com/annefou/donana-hydroperiod-evidence.git
-cd donana-hydroperiod-evidence
-pixi install
-pixi run flooding     # open data; ERA5 needs a CDS account (~/.cdsapirc). Long: every Sentinel-2 date 2017-2026
-pixi run climate-dt   # DestinE upgraded access (~/.polytopeapirc) and CDS account
+pixi run snakemake --cores 1              # flooding regime: every Sentinel-2 date 2017-2026 (long); CDS account for ERA5
+pixi run snakemake --cores 1 climate_dt   # Climate DT fitness test: DestinE upgraded access and CDS account
+pixi run snakemake --cores 1 flood_wcd    # Copernicus Land Water Cover Duration check: CDSE_TOKEN
 ```
 
-This repository publishes code, plots and summary statistics only; input data stay in `work/` (gitignored) and are downloaded from their sources. Figure sources and caveats: `figures/README.md`. CHG piezometer data are reproduced citing the source under the CHG legal notice and are not official data. Raw Climate DT extracts are not redistributed (DestinE terms); only derived statistics are reported.
+The same steps are pixi tasks (`pixi run flooding`, `pixi run climate-dt`, `pixi run flood-wcd`).
 
-**Inputs and licences.** Natura 2000 boundary (EEA). LAST-EBD flood masks and hydroperiod maps, ground-truth points (Zenodo, CC BY 4.0). ICTS-Doñana marsh water levels (CC BY 4.0). CHG piezometers (no explicit licence; CHG legal notice authorises reproduction citing the source; data "not official"). OpenStreetMap water polygons (ODbL). Sentinel-2 and Sentinel-1 (Copernicus terms; Earth Search and Microsoft Planetary Computer hosting). ERA5 (Copernicus licence). E-OBS (ECA&D data policy: non-commercial research and education only; used here only as a research cross-check, cite Cornes et al. 2018). DestinE Climate DT (DestinE terms).
+Every step is a script in `pipeline/` with its usage in its docstring; `Snakefile` gives the order, inputs and
+outputs, and copies the summary results from `work/` into `results/` and `figures/`.
+`pixi run snakemake --cores 1 --dry-run` lists what would run without downloading anything.
+
+### With Docker
+
+The image holds the environment and the code, never an account. Put the accounts the steps need in a file that
+stays on your machine (for example `~/credentials.env`, outside the repository) and pass it at run time:
+
+```
+CDSAPI_URL=https://cds.climate.copernicus.eu/api
+CDSAPI_KEY=<CDS personal access token>
+COPERNICUSMARINE_SERVICE_USERNAME=<Copernicus Marine user name>
+COPERNICUSMARINE_SERVICE_PASSWORD=<Copernicus Marine password>
+POLYTOPE_USER_KEY=<DestinE offline token>
+```
+
+```bash
+docker run --rm --env-file ~/credentials.env -v "$PWD/work:/app/work" -v "$PWD/results:/app/results" \
+    ghcr.io/annefou/donana-hydroperiod-evidence:latest pixi run snakemake --cores 1 climate_dt
+```
+
+Leave out the lines a step does not need. The image is published on GitHub's container registry with each release.
 
 ## Built from a template
 

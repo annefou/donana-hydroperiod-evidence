@@ -16,7 +16,7 @@
       "@type": ["Dataset", "ResearchObject"],
       "name": "donana-hydroperiod-evidence",
       "description": "Doñana flooding regime on HEALPix: Sentinel-2/1 replication of Kordelas et al. 2018, validation against LAST-EBD, lagoon hydroperiod vs groundwater, Climate DT fitness test. DRAFT, not reviewed.",
-      "datePublished": "2026-10-22",
+      "datePublished": "2026-11-04",
       "license": { "@id": "https://spdx.org/licenses/MIT" },
       "publisher": { "@id": "https://orcid.org/0000-0002-1784-2920" },
       "author": [{ "@id": "https://orcid.org/0000-0002-1784-2920" }],

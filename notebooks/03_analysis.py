@@ -14,58 +14,42 @@
 # ---
 
 # %% [markdown]
-# # 03 — Analysis
+# # 03 — Hydroperiod, anomaly and groundwater
 #
-# This notebook computes the headline statistic that the replication tests.
-# Write the analysis as a faithful port of the original paper's method, with
-# any deviations flagged explicitly in the markdown.
-#
-# **Verify before drafting nanopubs:** the Replication Study's Methodology
-# field and the Outcome's Evidence field will be drafted *from this code* —
-# don't extrapolate framework or hyperparameters from memory. See
-# `docs/verify-before-drafting.md`.
+# Hydroperiod = days flooded per HEALPix cell and hydrological year (1 September to 31 August). The Sentinel-2 era is
+# compared with the LAST-EBD Landsat record 1984/85–2016/17; the two overlap in 2017/18, where the offset between
+# them is measured rather than assumed.
 
 # %%
+import json
 from pathlib import Path
 
 import pandas as pd
 
+R = Path("../results/flooding")
+h = json.loads((R / "results_hydroperiod.json").read_text())
+cols = ["hydro_year", "n_s2_dates_used", "marsh_mean_hp_days", "marsh_flooded_ge1d_ha", "marsh_flooded_ge90d_ha",
+        "marsh_halfsample_mad_days_median"]
+pd.DataFrame(h["years"])[cols].round(1)
+
 # %%
-CLEAN_DIR = Path("../data/clean")
-RESULTS_DIR = Path("../results")
-RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+print("Overlap with LAST-EBD (2017/18):", json.dumps(h["last_overlap"], indent=1)[:1500])
+
+# %%
+a = json.loads((R / "results_anomaly.json").read_text())
+pd.Series({k: v for k, v in a.items() if k != "years"}).to_frame("value")
 
 # %% [markdown]
-# ## Load clean data
+# Lagoon hydroperiod against groundwater (CHG piezometers; data reproduced citing the source, not official data):
 
 # %%
-# clean = pd.read_parquet(CLEAN_DIR / "dataset.parquet")
+g = json.loads((R / "results_groundwater.json").read_text())
+print("lagoon -> piezometer:", g["pairs"])
+print(json.dumps(g["lagoons"], indent=1)[:2000])
 
 # %% [markdown]
-# ## Method (port of paper §X)
-#
-# Briefly state the method and any deviations from the original paper.
-#
-# - **Same as paper:** ...
-# - **Deviations:** ...
+# Internal checks (`pipeline/flooding/15_checks.py`): 10 m against the RGB overview, stability, detection by size,
+# and the EBD press release.
 
 # %%
-# Implement the analysis here. Examples:
-# - Statistical model fit (statsmodels, bambi, scikit-learn)
-# - ML training/evaluation (PyTorch, TensorFlow, scikit-learn)
-# - Spatial aggregation + zonal statistics
-
-# %% [markdown]
-# ## Persist results
-
-# %%
-# Persist a tidy summary that downstream notebooks (and the Outcome
-# nanopub draft) can read. Include numerical headlines + uncertainty.
-#
-# Example:
-# summary = pd.DataFrame({
-#     "metric": ["coefficient", "p_value", "n"],
-#     "value":  [0.4792, 1e-5, 528],
-# })
-# summary.to_csv(RESULTS_DIR / "summary.csv", index=False)
-# print(summary)
+print(json.dumps(json.loads((R / "results_checks.json").read_text()), indent=1)[:2500])
