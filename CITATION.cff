@@ -29,6 +29,12 @@ identifiers:
   value: 10.5281/zenodo.23945812
   description: Concept DOI (resolves to the latest version) — cite the project
 - type: doi
+  value: 10.5281/zenodo.24426544
+  description: Version DOI for v0.1.1 — pins this exact release; cite this from nanopubs
+- type: swh
+  value: swh:1:rev:cbd4f1d6136a9770b8c18aa5a2213e5b3c1331b1;origin=https://github.com/annefou/donana-hydroperiod-evidence
+  description: Software Heritage ID of the v0.1.1 source tree
+- type: doi
   value: 10.5281/zenodo.23945813
   description: Version DOI for v0.1.0 — pins this exact release; cite this from nanopubs
 - type: swh
