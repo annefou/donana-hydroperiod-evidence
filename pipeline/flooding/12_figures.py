@@ -110,7 +110,8 @@ ax.text(1975, an["baseline_marsh_mean_hp"] + an["baseline_marsh_sd"] - 9, "1984/
 off = an.get("offset_S2_minus_LAST_2017_18_days")
 ax.text(2001, 8, f"S2 reads {abs(off):.0f} days below Landsat in the 2017/18 overlap\n(23–44 d across checks): compare S2 years with each other", color=INK2, fontsize=8)
 ax.set_xlabel("hydrological year (start)"); ax.set_ylabel("marsh-mean hydroperiod (days)")
-ax.set_title("Seasonal marsh (30,900 ha): mean days flooded per year"); ax.legend(frameon=False, fontsize=8, loc="upper right")
+marsh_ha = json.load(open(ROOT / "results_strata.json"))["marsh"]
+ax.set_title(f"Seasonal marsh ({round(marsh_ha, -2):,.0f} ha): mean days flooded per year"); ax.legend(frameon=False, fontsize=8, loc="upper right")
 ax2 = fig.add_subplot(gs[1])
 ag = zarr.open_group(ROOT / "data/products/anomaly.zarr", mode="r")
 a19 = ag["19/anomaly_days"][len(years) - 1]

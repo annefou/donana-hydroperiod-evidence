@@ -126,4 +126,5 @@ res = {nm: round(float(A[stratum == v].sum()), 1) for v, nm in enumerate(["sea_e
 res["n_lagoon_polygons"] = len(lag_names); res["lagoon_names"] = sorted(set(lag_names))
 res["n_last_masks"] = len(dates)
 jdump(res, ROOT / "data/grid/strata_info.json")
+jdump(res, ROOT / "results_strata.json")  # stratum areas (ha), published to results/flooding/
 print(res)

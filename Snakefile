@@ -11,7 +11,7 @@
 # into results/ and figures/, which are committed. The same steps are the pixi tasks in pixi.toml.
 
 W = "work"
-FLOOD_RESULTS = ["anomaly", "checks", "groundwater", "hydroperiod", "resampler_tests", "validation", "validation_s1"]
+FLOOD_RESULTS = ["anomaly", "checks", "groundwater", "hydroperiod", "resampler_tests", "strata", "validation", "validation_s1"]
 FLOOD_FIGS = ["fig1_hydroperiod_years", "fig2_hydroperiod_latest", "fig3_marsh_series_anomaly", "fig4_validation",
               "fig5_lagoon_groundwater", "fig6_flooded_area"]
 DT_FIGS = ["fig1_annual_rainfall", "fig2_seasonal_cycle"]
